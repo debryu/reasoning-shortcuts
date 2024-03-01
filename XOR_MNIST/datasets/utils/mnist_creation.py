@@ -141,7 +141,7 @@ def create_dataset(n_digit=2, sequence_len=2, samples_x_world=100, train=True, d
     label2idx = {c: set() for c in worlds}
     for k, v in tqdm(label2idx.items()):
         for i, label in enumerate(labels):
-            if tuple(label[:2]) == k:
+            if tuple(label[:sequence_len]) == k:
                 v.add(i)
     label2idx = {k: torch.tensor(list(v)) for k, v in label2idx.items()}
 
